@@ -1,71 +1,68 @@
-const convertButton = document.querySelector('.convert-button')
-const currencyToConverted = document.querySelector('.currency-to-converted')
+const botaoConverter = document.querySelector('.botao-converter')
+//const converterDe = document.querySelector('.converter-de')
+const converterPara = document.querySelector('.converter-para')
 
-async function convertValues() {
-  const inputCurrencyValue = document.querySelector('.input-currency').value
-  const currencyValueToConvert = document.querySelector(
-    '.currency-value-to-convert',
-  ) // Valor em Real
-  const currencyValueConverted = document.querySelector(
-    '.currency-value-converted',
-  ) // Outras moedas
+async function converterValores() {
+  const valorConversao = document.querySelector('.valor-conversao').value
+  const valorConverter = document.querySelector('.valor-converter')
+  const valorConvertido = document.querySelector('.valor-convertido')
 
-  const data = await fetch(
+  const dataReal = await fetch(
     'https://economia.awesomeapi.com.br/last/USD-BRL,EUR-BRL,GBP-BRL',
   ).then((response) => response.json())
 
-  const dolarToday = data.USDBRL.bid
-  const euroToday = data.EURBRL.bid
-  const libraToday = data.GBPBRL.bid
+  const realDolar = dataReal.USDBRL.bid
+  const realEuro = dataReal.EURBRL.bid
+  const realLibra = dataReal.GBPBRL.bid
 
-  currencyValueToConvert.innerHTML = new Intl.NumberFormat('pt-BR', {
+  valorConverter.innerHTML = new Intl.NumberFormat('pt-BR', {
     style: 'currency',
     currency: 'BRL',
-  }).format(inputCurrencyValue)
+  }).format(valorConversao)
 
-  if (currencyToConverted.value == 'dolar') {
-    currencyValueConverted.innerHTML = new Intl.NumberFormat('en-US', {
+  if (converterPara.value == 'dolar-para') {
+    valorConvertido.innerHTML = new Intl.NumberFormat('en-US', {
       style: 'currency',
       currency: 'USD',
-    }).format(inputCurrencyValue / dolarToday)
+    }).format(valorConversao / realDolar)
   }
 
-  if (currencyToConverted.value == 'euro') {
-    currencyValueConverted.innerHTML = new Intl.NumberFormat('de-DE', {
+  if (converterPara.value == 'euro-para') {
+    valorConvertido.innerHTML = new Intl.NumberFormat('de-DE', {
       style: 'currency',
       currency: 'EUR',
-    }).format(inputCurrencyValue / euroToday)
+    }).format(valorConversao / realEuro)
   }
 
-  if (currencyToConverted.value == 'libra') {
-    currencyValueConverted.innerHTML = new Intl.NumberFormat('en-GB', {
+  if (converterPara.value == 'libra-para') {
+    valorConvertido.innerHTML = new Intl.NumberFormat('en-GB', {
       style: 'currency',
       currency: 'GBP',
-    }).format(inputCurrencyValue / libraToday)
+    }).format(valorConversao / realLibra)
   }
 }
 
-function changeCurrency() {
-  const currencyName = document.querySelector('.currency-name')
-  const currencyImage = document.querySelector('.currency-converted')
+function trocarMoeda() {
+  const trocarNomePara = document.querySelector('.moeda-para')
+  const logoMoedaPara = document.querySelector('.logo-moeda-para')
 
-  if (currencyToConverted.value == 'dolar') {
-    currencyName.innerHTML = 'Dólar Americano'
-    currencyImage.src = './assets/dolar.png'
+  if (converterPara.value == 'dolar-para') {
+    trocarNomePara.innerHTML = 'Dólar Americano'
+    logoMoedaPara.src = './assets/dolar.png'
   }
 
-  if (currencyToConverted.value == 'euro') {
-    currencyName.innerHTML = 'Euro'
-    currencyImage.src = './assets/euro.png'
+  if (converterPara.value == 'euro-para') {
+    trocarNomePara.innerHTML = 'Euro'
+    logoMoedaPara.src = './assets/euro.png'
   }
 
-  if (currencyToConverted.value == 'libra') {
-    currencyName.innerHTML = 'Libra'
-    currencyImage.src = './assets/libra.png'
+  if (converterPara.value == 'libra-para') {
+    trocarNomePara.innerHTML = 'Libra'
+    logoMoedaPara.src = './assets/libra.png'
   }
 
-  convertValues()
+  converterValores()
 }
 
-currencyToConverted.addEventListener('change', changeCurrency)
-convertButton.addEventListener('click', convertValues)
+converterPara.addEventListener('change', trocarMoeda)
+botaoConverter.addEventListener('click', converterValores)

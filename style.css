@@ -1,109 +1,113 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
 
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: "Roboto", sans-serif;
-    outline: none;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Roboto', sans-serif;
+  outline: none;
 }
 
 body {
-    background-color: #0B132B;
+  background-color: #0b132b;
 }
 
 .logo {
-    width: 280px;
-    display: block;
-    margin: 20px auto;
+  width: 280px;
+  display: block;
+  margin: 20px auto;
 }
 
 main {
-    width: 375px;
-    background: #2e3b63;
-    border-radius: 20px;
-    margin: 0 auto 30px;
-    padding: 44px 24px 32px;
+  width: 375px;
+  background: #2e3b63;
+  border-radius: 20px;
+  margin: 0 auto 30px;
+  padding: 44px 24px 32px;
 }
 
 label {
-    color: #dbdbdb;
-    font-weight: 400;
-    font-size: 14px;
-    padding-left: 2px;
+  color: #dbdbdb;
+  font-weight: 400;
+  font-size: 14px;
+  padding-left: 2px;
 }
 
-select, input {
-    background: #f1f1f1;
-    border: 1px solid #BBBBBB;
-    border-radius: 5px;
-    width: 100%;
-    height: 48px;
-    margin-bottom: 24px;
-    appearance: none;
-    padding-left: 8px;
-    font-weight: 700;
-    font-size: 16px;
-    color: #555555;
-    cursor: pointer;
+select,
+input {
+  background: #f1f1f1;
+  border: 1px solid #bbbbbb;
+  border-radius: 5px;
+  width: 100%;
+  height: 48px;
+  margin-bottom: 24px;
+  appearance: none;
+  padding-left: 8px;
+  font-weight: 700;
+  font-size: 16px;
+  color: #555555;
+  cursor: pointer;
 }
 
 button {
-    background: #C80806;
-    border-radius: 8px;
-    width: 100%;
-    height: 48px;
-    border: none;
-    color: #FFFFFF;
-    font-weight: 700;
-    font-size: 18px;
-    cursor: pointer;
+  background: #c80806;
+  border-radius: 8px;
+  width: 100%;
+  height: 48px;
+  border: none;
+  color: #ffffff;
+  font-weight: 700;
+  font-size: 18px;
+  cursor: pointer;
 }
 
 button:hover {
-    opacity: .9;
+  opacity: 0.9;
 }
 
 button:active {
-    opacity: .7;
+  opacity: 0.7;
 }
 
 section {
-    border: 1px solid #0077B6;
-    border-radius: 20px;
-    margin-top: 30px;
-    padding: 12px;
+  border: 1px solid #0077b6;
+  border-radius: 20px;
+  margin-top: 30px;
+  padding: 12px;
 
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-.arrow-img {
-    margin: 15px 0;
+.seta-img {
+  margin: 15px 0;
 }
 
-.currency-box {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 4px;
+.container-moeda {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
 }
 
-.currency-to-convert, .currency-converted {
-    width: 50px;
-    border-radius: 50%;
-    border: 2px solid #FFFFFF;
+.logo-moeda-de,
+.logo-moeda-para {
+  width: 50px;
+  border-radius: 50%;
+  border: 2px solid #ffffff;
 }
 
-.currency, .currency-name {
-    color: #f0f0f0;
-    font-size: 14px;
-    margin-top: 2px;
+.moeda-de,
+.moeda-para {
+  color: #f0f0f0;
+  font-size: 14px;
+  margin-top: 2px;
 }
 
-.currency-value-to-convert, .currency-value-converted {
-    color: #f1f1f1;
-    font-weight: 700;
-    font-size: 20px;
+.valor-converter,
+.valor-convertido {
+  color: #f1f1f1;
+  font-weight: 700;
+  font-size: 20px;
 }
