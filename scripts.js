@@ -3,41 +3,35 @@ const converterDe = document.querySelector('.converter-de')
 const converterPara = document.querySelector('.converter-para')
 
 async function converterValores() {
-  const valorConversao = document.querySelector('.valor-conversao').value
+  const valorConversao =
+    parseFloat(
+      document
+        .querySelector('.valor-conversao')
+        .value.replace(/\./g, '')
+        .replace(',', '.'),
+    ) || 0
   const valorConverter = document.querySelector('.valor-converter')
   const valorConvertido = document.querySelector('.valor-convertido')
 
-  const dataReal = await fetch(
-    'https://economia.awesomeapi.com.br/last/BRL-USD,BRL-EUR,BRL-GBP',
+  const data = await fetch(
+    'https://economia.awesomeapi.com.br/last/BRL-USD,BRL-EUR,BRL-GBP,USD-BRL,USD-EUR,USD-GBP,EUR-BRL,EUR-USD,EUR-GBP,GBP-BRL,GBP-USD,GBP-EUR',
   ).then((response) => response.json())
 
-  const dataDolar = await fetch(
-    'https://economia.awesomeapi.com.br/last/USD-BRL,USD-EUR,USD-GBP',
-  ).then((response) => response.json())
+  const realDolar = data.BRLUSD.bid
+  const realEuro = data.BRLEUR.bid
+  const realLibra = data.BRLGBP.bid
 
-  const dataEuro = await fetch(
-    'https://economia.awesomeapi.com.br/last/EUR-BRL,EUR-USD,EUR-GBP',
-  ).then((response) => response.json())
+  const dolarReal = data.USDBRL.bid
+  const dolarEuro = data.USDEUR.bid
+  const dolarLibra = data.USDGBP.bid
 
-  const dataLibra = await fetch(
-    'https://economia.awesomeapi.com.br/last/GBP-BRL,GBP-USD,GBP-EUR',
-  ).then((response) => response.json())
+  const euroReal = data.EURBRL.bid
+  const euroDolar = data.EURUSD.bid
+  const euroLibra = data.EURGBP.bid
 
-  const realDolar = dataReal.BRLUSD.bid
-  const realEuro = dataReal.BRLEUR.bid
-  const realLibra = dataReal.BRLGBP.bid
-
-  const dolarReal = dataDolar.USDBRL.bid
-  const dolarEuro = dataDolar.USDEUR.bid
-  const dolarLibra = dataDolar.USDGBP.bid
-
-  const euroReal = dataEuro.EURBRL.bid
-  const euroDolar = dataEuro.EURUSD.bid
-  const euroLibra = dataEuro.EURGBP.bid
-
-  const libraReal = dataLibra.GBPBRL.bid
-  const libraDolar = dataLibra.GBPUSD.bid
-  const libraEuro = dataLibra.GBPEUR.bid
+  const libraReal = data.GBPBRL.bid
+  const libraDolar = data.GBPUSD.bid
+  const libraEuro = data.GBPEUR.bid
 
   if (converterDe.value === 'real-de') {
     valorConverter.innerHTML = new Intl.NumberFormat('pt-BR', {
